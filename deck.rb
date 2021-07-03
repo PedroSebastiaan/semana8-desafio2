@@ -1,48 +1,52 @@
 require_relative 'card.rb'
 
-
 class Deck
     attr_accessor :cards
-    def initialize (cards)
-        @cards = cards
+
+    def initialize
+        generator(cards)
     end
-end
 
-kinds = %w[C D E T]
-numbers = [1,2,3,4,5,6,7,8,9,10,11,12,13]
-new_deck = []
-
-def deck_maker (array1, array2, array3)
-    array1.each do |i|
-        array2.each do |j|
-            array3 << [i,j]
+    def generator (cards)
+        kinds = %w[C D E T]
+        numbers = [1,2,3,4,5,6,7,8,9,10,11,12,13]
+        new_deck = []
+        
+        def deck_maker (array1, array2, array3)
+            array1.each do |i|
+                array2.each do |j|
+                    array3 << [i,j]
+                end
+            end
         end
+        deck_maker(kinds, numbers, new_deck)
+        @cards = new_deck
     end
-end
 
-def shuffle (array)
-    array = array.shuffle
-end
+    def shuffle
+        @cards = @cards.shuffle
+    end
 
-deck_maker(kinds, numbers, new_deck)
+    def draw
+        @cards.shuffle.pop
+    end
 
-my_deck = Deck.new(new_deck)
-
-my_deck.cards.shuffle
-
-def draw (array)
-    array.pop
-end
-
-def dist (array)
+    def dist
     hand = []
     5.times do |i|
-        hand << draw(array)
+        hand << draw
     end
-    pp hand
+    hand
+    end
 end
 
-dist(my_deck.cards.shuffle)
+my_deck = Deck.new
+pp my_deck.dist
+
+
+
+
+
 
 
 
