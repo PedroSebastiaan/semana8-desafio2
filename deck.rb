@@ -20,11 +20,11 @@ def deck_maker (array1, array2, array3)
     end
 end
 
-deck_maker(kinds, numbers, new_deck
-
 def shuffle (array)
     array = array.shuffle
 end
+
+deck_maker(kinds, numbers, new_deck)
 
 my_deck = Deck.new(new_deck)
 
